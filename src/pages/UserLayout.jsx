@@ -1,39 +1,47 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { Mail, Phone, MapPin, Clock, MessageCircle, Send } from 'lucide-react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
-const Contact = () => {
+const UserLayout = () => {
   const [state, handleSubmit] = useForm("xqabljrr");
 
   if (state.succeeded) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg p-8 text-center">
-          <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Send className="h-8 w-8 text-green-600" />
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg p-8 text-center">
+            <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Send className="h-8 w-8 text-green-600" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h2>
+            <p className="text-gray-600 mb-6">Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300"
+            >
+              Send Another Message
+            </button>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h2>
-          <p className="text-gray-600 mb-6">Your message has been sent successfully. We'll get back to you within 24 hours.</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300"
-          >
-            Send Another Message
-          </button>
         </div>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
+      <Navbar />
+      
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
+      <section className="relative py-20 bg-gradient-to-r from-green-600 to-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-            Have questions about our tea consultation services? We're here to help you grow 
-            your tea business with expert guidance and sustainable farming practices.
+            Have questions about our agricultural consultation services? We're here to help you grow 
+            your farming business with expert guidance and sustainable practices.
           </p>
         </div>
       </section>
@@ -51,7 +59,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email Us</h3>
-                  <p className="text-gray-600">info@teaproject.com</p>
+                  <p className="text-gray-600">info@expertconnect.com</p>
                   <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                 </div>
               </div>
@@ -73,7 +81,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Visit Us</h3>
-                  <p className="text-gray-600">123 Tea Garden Lane<br />California, CA 94123</p>
+                  <p className="text-gray-600">123 Farm Street<br />Agriculture City, AC 12345</p>
                   <p className="text-sm text-gray-500">By appointment only</p>
                 </div>
               </div>
@@ -89,25 +97,6 @@ const Contact = () => {
                     Saturday: 10:00 AM - 4:00 PM<br />
                     Sunday: Closed
                   </p>
-                </div>
-              </div>
-            </div>
-
-            {/* FAQ Section */}
-            <div className="mt-12">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h3>
-              <div className="space-y-4">
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h4 className="font-semibold text-gray-900 mb-2">How quickly can I schedule a consultation?</h4>
-                  <p className="text-gray-600 text-sm">Most consultations can be scheduled within 48 hours. Emergency consultations are available for urgent farming issues.</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h4 className="font-semibold text-gray-900 mb-2">Do you offer on-site visits?</h4>
-                  <p className="text-gray-600 text-sm">Yes, we provide on-site consultations for larger tea plantations. Additional travel fees may apply based on location.</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h4 className="font-semibold text-gray-900 mb-2">What payment methods do you accept?</h4>
-                  <p className="text-gray-600 text-sm">We accept all major credit cards, bank transfers, and PayPal for consultation fees.</p>
                 </div>
               </div>
             </div>
@@ -174,19 +163,6 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
-
-                <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
@@ -197,9 +173,8 @@ const Contact = () => {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                   >
                     <option value="">Select a subject</option>
-                    <option value="consultation">Tea Consultation Inquiry</option>
+                    <option value="consultation">Agricultural Consultation</option>
                     <option value="booking">Expert Booking</option>
-                    <option value="products">Product Information</option>
                     <option value="partnership">Partnership Opportunities</option>
                     <option value="other">Other</option>
                   </select>
@@ -215,7 +190,7 @@ const Contact = () => {
                     rows={6}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
-                    placeholder="Tell us about your tea farming needs, current challenges, or any questions you have about our consultation services..."
+                    placeholder="Tell us about your farming needs, current challenges, or any questions you have about our consultation services..."
                   />
                   <ValidationError 
                     prefix="Message" 
@@ -223,18 +198,6 @@ const Contact = () => {
                     errors={state.errors}
                     className="text-red-500 text-sm mt-1"
                   />
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <input
-                    type="checkbox"
-                    id="newsletter"
-                    name="newsletter"
-                    className="mt-1 h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
-                  />
-                  <label htmlFor="newsletter" className="text-sm text-gray-600">
-                    I'd like to receive updates about new tea varieties, farming tips, and consultation services.
-                  </label>
                 </div>
 
                 <button
@@ -259,8 +222,10 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
 
-export default Contact;
+export default UserLayout;
